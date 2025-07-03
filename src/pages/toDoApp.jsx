@@ -36,7 +36,7 @@ function ToDoApp() {
               className="bg-none rounded-2xl inline"
               width={24}
             />
-            <h1 className="text-center text-2xl font-black text-zinc-50 inline">
+            <h1 className="sm:text-center text-2xl font-black text-zinc-50 inline">
               To-Do-App
             </h1>
           </div>

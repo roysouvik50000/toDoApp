@@ -19,8 +19,9 @@ export default function Login() {
   };
 
   return (
-    <div className="bg-cyan-600 h-screen w-screen flex items-center justify-center">
-      <div className="bg-black/50 px-7 py-9 rounded-2xl text-white font-bold w-[420px]">
+    <div className="bg-cyan-600 h-screen w-screen flex flex-col gap-6 items-center justify-center">
+      <h1 className="text-center font-black text-white" >To Do App</h1>
+      <div className="bg-black/50 px-7 py-9 rounded-2xl text-white font-bold w-screen sm:w-[420px]">
         <form
           onSubmit={(e) => e.preventDefault()}
           className="flex flex-col justify-center gap-8"

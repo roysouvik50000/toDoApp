@@ -59,7 +59,7 @@ export default function ToDoTaskLists() {
                 <img src={box} className="w-9 absolute left-0 cursor-pointer" />
               )}
             </div>
-            <div className="flex justify-between mt-12 ms-5">
+            <div className="flex justify-between flex-wrap mt-8">
               <div className="flex gap-4">
                 <h1>{`${i + 1}.`}</h1>
                 {toDo.isEditing ? (
