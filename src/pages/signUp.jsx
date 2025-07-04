@@ -19,7 +19,7 @@ export default function SignUp() {
     e.preventDefault();
     try {
       dispatch(signupUser({ name, email, password }));
-      navigate("/login");
+      navigate("/toDoApp/login");
       console.log("signUp Sucess");
     } catch (error) {
       console.log(error.message);
@@ -59,15 +59,6 @@ export default function SignUp() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          {/* <div>
-            <label>Passward :- </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter Password..."
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div> */}
           <div>
             <label>Password : -</label>
             <div className="border-2 border-black relative w-48">
@@ -97,17 +88,11 @@ export default function SignUp() {
             Sign Up
           </button>
         </form>
-        {/* <p
-          onClick={() => navigate("/login")}
-          className="text-right mt-5 font-mono underline text-red-600 cursor-pointer"
-        >
-          Login
-        </p> */}
         <div className="flex gap-20 mt-3">
           <p className="text-[14px] text-red-600">Already user ?</p>
           <p
-            className="text-[14px] text-blue-200 underline"
-            onClick={() => navigate("/login")}
+            className="text-[14px] text-blue-200 underline cursor-pointer"
+            onClick={() => navigate("/toDoApp/login")}
           >
             Login
           </p>

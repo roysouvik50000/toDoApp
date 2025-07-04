@@ -54,7 +54,7 @@ export const observeAuth = createAsyncThunk(
   'auth/observeAuth',
   async (_, { dispatch }) => {
     return new Promise((resolve) => {
-      onAuthStateChanged(auth, (user) => {
+       onAuthStateChanged(auth, (user) => {
         if (user) {
           dispatch(authSlice.actions.setUser(user.toJSON()));
         } else {

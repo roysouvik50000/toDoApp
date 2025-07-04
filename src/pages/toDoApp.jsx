@@ -5,9 +5,11 @@ import { modalHandelar } from "../store/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import todoIcon from "../assets/checklist.gif";
-import { logoutUser, setUser, observeAuth } from "../store/authSlice";
+import { logoutUser, setUser, observeAuth, clearUser } from "../store/authSlice";
 import { useEffect, useState } from "react";
 import Login from "./login";
+import { Loader } from "../components/loading";
+import { clearToDos } from "../store/toDoSlice";
 function ToDoApp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ function ToDoApp() {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logoutUser());
+    dispatch(clearToDos());
     console.log("User signed out");
     navigate(<Login />);
   };
@@ -66,7 +69,7 @@ function ToDoApp() {
           <ToDoTaskLists />
         </div>
       ) : loading ? (
-        <h1>Loading..</h1>
+        <div className="min-h-screen flex justify-center items-center bg-emerald-400"><Loader/></div>
       ) : (
         <div>
           <Login />

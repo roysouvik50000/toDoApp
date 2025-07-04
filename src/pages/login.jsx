@@ -20,7 +20,7 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(loginUser({ email, password }));
-    user && navigate("/toDoApp");
+    navigate("/toDoApp/toDoApp");
     console.log("User Logged in success");
   };
 
@@ -58,7 +58,7 @@ export default function Login() {
               <button
                 type="button"
                 onClick={handelShoePW}
-                className="absolute right-2 top-1"
+                className="absolute right-2 top-1 cursor-pointer"
               >
                 {showPW ? (
                   <img src={hide} className="w-4 h-4" alt="i" />
@@ -82,8 +82,8 @@ export default function Login() {
         <div className="flex justify-between mt-6">
           <p className="text-[12px] text-red-600">Don't have an Account ?</p>
           <p
-            onClick={() => navigate("/signUp")}
-            className="text-[12px] text-blue-200 underline"
+            onClick={() => navigate("/toDoApp/signUp")}
+            className="text-[12px] text-blue-200 underline cursor-pointer"
           >
             Sign Up
           </p>

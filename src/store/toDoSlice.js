@@ -86,7 +86,11 @@ const todoSlice = createSlice({
     error: null,
   },
   reducers: {
-    // No synchronous reducers needed here, all handled by extraReducers for async thunks
+    clearToDos : (state)=>{
+      state.todos = [];
+      state.loading=false;
+      state.error = null ;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -128,5 +132,7 @@ const todoSlice = createSlice({
       });
   },
 });
+
+export const {clearToDos} = todoSlice.actions;
 
 export default todoSlice.reducer;
