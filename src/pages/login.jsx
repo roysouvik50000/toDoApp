@@ -20,7 +20,7 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(loginUser({ email, password }));
-    navigate("/toDoApp");
+    navigate("/");
     console.log("User Logged in success");
   };
 
