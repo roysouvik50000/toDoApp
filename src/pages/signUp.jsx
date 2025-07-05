@@ -92,7 +92,7 @@ export default function SignUp() {
           <p className="text-[14px] text-red-600">Already user ?</p>
           <p
             className="text-[14px] text-blue-200 underline cursor-pointer"
-            onClick={() => navigate("/toDoApp/login")}
+            onClick={() => navigate("/login")}
           >
             Login
           </p>

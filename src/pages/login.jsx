@@ -20,7 +20,7 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(loginUser({ email, password }));
-    navigate("/toDoApp/toDoApp");
+    navigate("/toDoApp");
     console.log("User Logged in success");
   };
 
@@ -82,7 +82,7 @@ export default function Login() {
         <div className="flex justify-between mt-6">
           <p className="text-[12px] text-red-600">Don't have an Account ?</p>
           <p
-            onClick={() => navigate("/toDoApp/signUp")}
+            onClick={() => navigate("/signUp")}
             className="text-[12px] text-blue-200 underline cursor-pointer"
           >
             Sign Up

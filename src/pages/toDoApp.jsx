@@ -23,7 +23,7 @@ function ToDoApp() {
     dispatch(logoutUser());
     dispatch(clearToDos());
     console.log("User signed out");
-    navigate(<Login />);
+    navigate("/login");
   };
 
   return (
@@ -72,7 +72,7 @@ function ToDoApp() {
         <div className="min-h-screen flex justify-center items-center bg-emerald-400"><Loader/></div>
       ) : (
         <div>
-          <Login />
+          {navigate("/login")}
         </div>
       )}
     </>
