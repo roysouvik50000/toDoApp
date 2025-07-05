@@ -19,7 +19,7 @@ export default function SignUp() {
     e.preventDefault();
     try {
       dispatch(signupUser({ name, email, password }));
-      navigate("/toDoApp/login");
+      navigate("/login");
       console.log("signUp Sucess");
     } catch (error) {
       console.log(error.message);

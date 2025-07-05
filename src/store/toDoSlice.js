@@ -109,17 +109,17 @@ const todoSlice = createSlice({
       })
       // Add Todo
       .addCase(addTodo.fulfilled, (state, action) => {
-        state.todos.unshift(action.payload); // Add to the beginning for new todos
+        state.todos.unshift(action.payload);
       })
       .addCase(addTodo.rejected, (state, action) => {
-        state.error = action.payload; // Handle add error
+        state.error = action.payload;
       })
       // Delete Todo
       .addCase(deleteTodo.fulfilled, (state, action) => {
         state.todos = state.todos.filter(todo => todo.id !== action.payload);
       })
       .addCase(deleteTodo.rejected, (state, action) => {
-        state.error = action.payload; // Handle delete error
+        state.error = action.payload;
       })
       // Update Todo
       .addCase(updateTodo.fulfilled, (state, action) => {
@@ -128,7 +128,7 @@ const todoSlice = createSlice({
         );
       })
       .addCase(updateTodo.rejected, (state, action) => {
-        state.error = action.payload; // Handle update error
+        state.error = action.payload;
       });
   },
 });

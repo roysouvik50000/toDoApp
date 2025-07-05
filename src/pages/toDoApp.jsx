@@ -7,13 +7,13 @@ import { useNavigate } from "react-router";
 import todoIcon from "../assets/checklist.gif";
 import { logoutUser, setUser, observeAuth, clearUser } from "../store/authSlice";
 import { useEffect, useState } from "react";
-import Login from "./login";
 import { Loader } from "../components/loading";
 import { clearToDos } from "../store/toDoSlice";
 function ToDoApp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, isAuthenticated, loading } = useSelector((state) => state.auth);
+  const { user, isAuthenticated} = useSelector((state) => state.auth);
+  const {loading} =useSelector((state) => state.toDo);
   useEffect(() => {
     dispatch(observeAuth());
   }, [dispatch]);
