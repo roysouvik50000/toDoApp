@@ -6,6 +6,7 @@ import deleteIcon from "../assets/trash.svg";
 
 import { useEffect, useState } from "react";
 import { deleteTodo, fetchTodos, updateTodo } from "../store/toDoSlice";
+import EditToDoTask from "./EditToDoTask";
 
 export default function ToDoTaskLists() {
   const user = useSelector((state) => state.auth.user);
@@ -23,36 +24,18 @@ export default function ToDoTaskLists() {
       updateTodo({ id: id, updatedFields: { isComplited: !isComplited } })
     );
   };
-
-  const [editedTask, setEditedTask] = useState("");
-  const [editedPriority, setEditedPriority] = useState("");
-  const [editedDueDate, setEditedDueDate] = useState("");
-
   const handleToggleEdit = (id, isEditing) => {
     dispatch(updateTodo({ id: id, updatedFields: { isEditing: !isEditing } }));
-  };
-
-  const handleSaveEdit = (id) => {
-    dispatch(
-      updateTodo({
-        id: id,
-        updatedFields: {
-          task: editedTask,
-          dueDate:editedDueDate,
-          priority2: editedPriority,
-        },
-      })
-    );
-    setEditedTask("");
-    setEditedPriority("");
-    setEditedDueDate("");
   };
 
   return (
     <>
       {toDoArr ? (
-        toDoArr.map((toDo, i) => (
-          <div
+        toDoArr.map((toDo, i) => {
+          if (toDo.isEditing){ 
+            return <EditToDoTask toDo={toDo} i={i} key={i} />
+           }
+          return (<div
             key={i}
             className="bg-black/10 shadow-xl/30  py-2 px-5 sm:w-2/3 mx-auto w-[97%] rounded-2xl text-white my-3.5 relative min-h-42"
           >
@@ -73,15 +56,6 @@ export default function ToDoTaskLists() {
             <div className="flex justify-between flex-wrap mt-8">
               <div className="flex gap-4">
                 <h1>{`${i + 1}.`}</h1>
-                {toDo.isEditing ? (
-                  <div>
-                    <input
-                      defaultValue={toDo.task}
-                      onChange={(e) => setEditedTask(e.target.value)}
-                      className="border-2 border-amber-50 px-1.5 py-1 rounded-[8px]"
-                    />
-                  </div>
-                ) : (
                   <h1
                     className={`text-wrap ${
                       toDo.isComplited ? "line-through" : ""
@@ -89,52 +63,17 @@ export default function ToDoTaskLists() {
                   >
                     {toDo.task}
                   </h1>
-                )}
               </div>
               <div>
-                {toDo.isEditing ? (
-                  <input
-                    className="border-2 border-black/30 rounded-2xl p-1 mx-1.5 my-1"
-                    type="date"
-                    defaultValue={toDo.dueDate}
-                    onChange={(e) => setEditedDueDate(e.target.value)}
-                  />
-                ) : (
                   <h1 className="text-[12px] h-14 text-nowrap">{`Due Date:- ${toDo.dueDate}`}</h1>
-                )}
               </div>
             </div>
             <div className="flex justify-between mt-7 gap-4.5 ps-2.5 pb-2.5">
               <div>
-                {toDo.isEditing ? (
-                  <select
-                    defaultValue={toDo.priority2}
-                    onChange={(e) => setEditedPriority(e.target.value)}
-                    className="border-2 border-black/30 rounded-2xl bg-blue-600"
-                  >
-                    <option value="Choose...">Choose...</option>
-                    <option value={"Urgent"}>Urgent</option>
-                    <option value={"Not Urgent"}>Not Urgent</option>
-                  </select>
-                ) : (
                   <h1 className="text-[12px]">{`${toDo.priority2}`}</h1>
-                )}
               </div>
               <div className="flex gap-7.5">
                 <div>
-                  {toDo.isEditing ? (
-                    <button
-                      type="button"
-                      className="cursor-pointer rounded-full w-6 bg-green-400 ml-2.5"
-                      onClick={() => {
-                        `
-                        ${handleSaveEdit(toDo.id)}
-                        ${handleToggleEdit(toDo.id, toDo.isEditing)}`;
-                      }}
-                    >
-                      ✅
-                    </button>
-                  ) : (
                     <img
                       src={pencil}
                       alt="icon"
@@ -143,7 +82,6 @@ export default function ToDoTaskLists() {
             ${handleToggleEdit(toDo.id, toDo.isEditing)}
             ${e.preventDefault()}`}
                     />
-                  )}
                 </div>
                 <img
                   src={deleteIcon}
@@ -155,8 +93,8 @@ export default function ToDoTaskLists() {
                 />
               </div>
             </div>
-          </div>
-        ))
+          </div>)
+})
       ) : (
         <div
           key={i}
