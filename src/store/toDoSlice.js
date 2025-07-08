@@ -16,7 +16,7 @@ export const fetchTodos = createAsyncThunk(
   'todos/fetchTodos',
   async (user, { rejectWithValue }) => {
     try {
-            console.log("fatch to do called");
+      console.log("fatch to do called");
 
       const todosCollectionRef = collection(db, 'todos');
       // Order by createdAt to ensure consistent order
@@ -25,7 +25,7 @@ export const fetchTodos = createAsyncThunk(
       const todos = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       return todos;
     } catch (error) {
-            console.log(error.message)
+      console.log(error.message)
 
       return rejectWithValue(error.message);
     }
@@ -35,7 +35,7 @@ export const fetchTodos = createAsyncThunk(
 export const addTodo = createAsyncThunk(
   'todos/addTodo',
   async (todoData, { rejectWithValue }) => {
-    
+
     try {
       console.log(" todo added");
       const todosCollectionRef = collection(db, 'todos');
@@ -86,10 +86,10 @@ const todoSlice = createSlice({
     error: null,
   },
   reducers: {
-    clearToDos : (state)=>{
+    clearToDos: (state) => {
       state.todos = [];
-      state.loading=false;
-      state.error = null ;
+      state.loading = false;
+      state.error = null;
     }
   },
   extraReducers: (builder) => {
@@ -133,6 +133,6 @@ const todoSlice = createSlice({
   },
 });
 
-export const {clearToDos} = todoSlice.actions;
+export const { clearToDos } = todoSlice.actions;
 
 export default todoSlice.reducer;

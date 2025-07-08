@@ -12,7 +12,6 @@ const AddToDoTaskModal = () => {
   const user = useSelector((state) => state.auth.user);
   const [task, setTask] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const [priority1, setPriority1] = useState("");
   const [priority2, setPriority2] = useState("");
   const dispatch = useDispatch();
 
@@ -20,7 +19,6 @@ const AddToDoTaskModal = () => {
     const todoData = {
         task: task,
         dueDate: dueDate,
-        priority1: priority1,
         priority2: priority2,
         isComplited: false,
         isEditing: false,
@@ -32,7 +30,6 @@ const AddToDoTaskModal = () => {
     );
     setTask("");
     setDueDate("");
-    setPriority1("");
     setPriority2("");
   };
 
@@ -78,15 +75,6 @@ const AddToDoTaskModal = () => {
 
           <div>
             <label>Priorityes :-</label>
-            <select
-              value={priority1}
-              onChange={(e) => setPriority1(e.target.value)}
-              className="border-2 border-black/30 rounded-2xl p-1 mx-1.5 my-1"
-            >
-              <option value="Choose...">Choose...</option>
-              <option value={"Importent"}>Importent</option>
-              <option value={"Not Importent"}>Not Importent</option>
-            </select>
             <select
               value={priority2}
               onChange={(e) => setPriority2(e.target.value)}

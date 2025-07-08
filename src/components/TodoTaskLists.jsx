@@ -93,7 +93,7 @@ export default function ToDoTaskLists() {
             </div>
             <div className="flex justify-between mt-7 gap-4.5 ps-2.5 pb-2.5">
               <div>
-                <h1 className="text-[12px]">{`${toDo.priority1},${toDo.priority2}`}</h1>
+                <h1 className="text-[12px]">{`${toDo.priority2}`}</h1>
               </div>
               <div className="flex gap-7.5">
                 <img
