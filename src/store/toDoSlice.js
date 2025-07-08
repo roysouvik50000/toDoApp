@@ -16,10 +16,8 @@ export const fetchTodos = createAsyncThunk(
   'todos/fetchTodos',
   async (user, { rejectWithValue }) => {
     try {
-      console.log("fatch to do called");
-
+      // console.log("fatch to do called");
       const todosCollectionRef = collection(db, 'todos');
-      // Order by createdAt to ensure consistent order
       const q = query(todosCollectionRef, where("user", "==", user), orderBy("createdAt", "desc"));
       const querySnapshot = await getDocs(q);
       const todos = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
